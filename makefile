@@ -7,5 +7,5 @@ format:
 
 .PHONY: lint
 lint:
-	$(RUFF) check .
+	$(RUFF) check . --fix --exit-non-zero-on-fix
 

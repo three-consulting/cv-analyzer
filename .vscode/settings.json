@@ -1,0 +1,6 @@
+{
+    "github.copilot.inlineSuggest.enable": true,
+    "python.linting.pycodestyleEnabled": false,
+    "python.linting.pylintEnabled": false,
+    "files.insertFinalNewline": true,
+}
