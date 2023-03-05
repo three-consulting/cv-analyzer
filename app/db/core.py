@@ -1,11 +1,12 @@
 import chromadb
 from chromadb.config import Settings
 from chromadb.utils import embedding_functions
-from app.config import Settings as AppSettings
+from config import Settings as AppSettings
 
 client = chromadb.Client(
     Settings(
-        chroma_db_impl="duckdb+parquet", persist_directory=AppSettings().chroma_path
+        chroma_db_impl="duckdb+parquet",
+        persist_directory=AppSettings().chroma_path,
     )
 )
 
