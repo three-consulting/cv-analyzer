@@ -24,9 +24,7 @@ logger.info("deleting existing collection")
 
 client.delete_collection(name=config.Settings().openai_collection_name)
 
-logger.info(
-    f"creating new collection named {config.Settings().openai_collection_name}"
-)
+logger.info(f"creating new collection named {config.Settings().openai_collection_name}")
 
 collection = client.create_collection(
     name=config.Settings().openai_collection_name,

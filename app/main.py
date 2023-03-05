@@ -10,9 +10,7 @@ demo = gr.Interface(
         gr.components.Textbox(label="filter", lines=5),
         gr.components.Slider(5, 20, value=10, label="k", step=1),
     ],
-    outputs=gr.components.DataFrame(
-        label="Semantically similar resumes", wrap=True
-    ),
+    outputs=gr.components.DataFrame(label="Semantically similar resumes", wrap=True),
 )
 
 
