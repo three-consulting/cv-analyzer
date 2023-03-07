@@ -13,9 +13,9 @@ logger.info("loading resumes")
 df_resume = pd.read_parquet(config.Settings().resume_path)
 logger.info("resumes loaded")
 corpus, ids, categories = (
-    list(df_resume["Resume_str"].values[0:5]),
-    list(df_resume["ID"].values[0:5].astype(str)),
-    list(df_resume["Category"].values[0:5]),
+    list(df_resume["Resume_str"].values),
+    list(df_resume["ID"].values.astype(str)),
+    list(df_resume["Category"].values),
 )
 categories = [{"category": category} for category in categories]
 logger.info(f"{categories}")
@@ -24,7 +24,9 @@ logger.info("deleting existing collection")
 
 client.delete_collection(name=config.Settings().openai_collection_name)
 
-logger.info(f"creating new collection named {config.Settings().openai_collection_name}")
+logger.info(
+    f"creating new collection named {config.Settings().openai_collection_name}"
+)
 
 collection = client.create_collection(
     name=config.Settings().openai_collection_name,
