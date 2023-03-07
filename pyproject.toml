@@ -13,7 +13,10 @@ openai = "^0.27.0"
 pandas = "^1.5.3"
 python-dotenv = "^1.0.0"
 gradio = "^3.20.0"
-torch = {url = "https://download.pytorch.org/whl/torch-1.11.0-cp310-cp310-manylinux2014_aarch64.whl"}
+torch = [
+    { url = "https://download.pytorch.org/whl/torch-1.11.0-cp310-cp310-manylinux2014_aarch64.whl", markers = "platform_machine == 'aarch64'" },
+    { url = "https://download.pytorch.org/whl/cpu/torch-1.11.0%2Bcpu-cp310-cp310-linux_x86_64.whl", markers = "platform_machine == 'x86_64'" },
+]
 chromadb = "^0.3.10"
 pydantic = "^1.10.5"
 pyarrow = "^11.0.0"
