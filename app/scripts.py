@@ -12,12 +12,13 @@ logger.info("initiating script")
 logger.info("loading resumes")
 df_resume = pd.read_parquet(config.Settings().resume_path)
 logger.info("resumes loaded")
-corpus, ids, categories = (
-    list(df_resume["Resume_str"].values),
-    list(df_resume["ID"].values.astype(str)),
-    list(df_resume["Category"].values),
+resumes, jobs, skills, ids = (
+    list(df_resume["resumes"].values),
+    list(df_resume["jobs"].values),
+    list(df_resume["skills"].values),
+    list(range(df_resume["resumes"].size)),
 )
-categories = [{"category": category} for category in categories]
+categories = [{"job": job, "skill": skill } for job, skill in zip(jobs, skills)]
 logger.info(f"{categories}")
 
 logger.info("deleting existing collection")
@@ -37,4 +38,4 @@ logger.info(
     f"adding documents to collection {config.Settings().openai_collection_name}"
 )
 
-collection.add(documents=corpus, ids=ids, metadatas=categories)
+collection.add(documents=resumes, ids=ids, metadatas=categories)
