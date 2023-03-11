@@ -4,7 +4,7 @@ version = "0.1.0"
 description = ""
 authors = ["Robert Siipola <robert@three.consulting>"]
 readme = "README.md"
-packages = [{include = "cv_analyser"}]
+packages = [{include = "app"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
