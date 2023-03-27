@@ -1,10 +1,9 @@
 import pandas as pd
-from typing import Optional
 from db.core import client, embedding_function
 from config import Settings
 
 
-def semantic_search(query: str, filter: Optional[str], k: int = 10):
+def semantic_search(query: str, filter: str, k: int = 10):
     collection = client.get_collection(
         name=Settings().openai_collection_name,
         embedding_function=embedding_function,
