@@ -1,7 +1,7 @@
 import chromadb
 from chromadb.config import Settings
-from chromadb.utils import embedding_functions
 from config import Settings as AppSettings
+from langchain.embeddings import OpenAIEmbeddings
 
 client = chromadb.Client(
     Settings(
@@ -10,7 +10,7 @@ client = chromadb.Client(
     )
 )
 
-embedding_function = embedding_functions.OpenAIEmbeddingFunction(
-    api_key=AppSettings().openai_api_key,
-    model_name=AppSettings().openai_embedding_model,
-)
+embedding_function = OpenAIEmbeddings(
+    openai_api_key=AppSettings().openai_api_key,
+    model=AppSettings().openai_embedding_model,
+).embed_documents
